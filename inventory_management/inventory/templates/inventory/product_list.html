@@ -1,0 +1,16 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+<ul>
+    {% for product in products %}
+    <li>
+        <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+        ({{ product.quantity }} available at €{{ product.price }})
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'product_create' %}">Add new product</a>
+{% endblock %}

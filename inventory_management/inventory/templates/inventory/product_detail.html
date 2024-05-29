@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p>Quantity: {{ product.quantity }}</p>
+<p>Price: €{{ product.price }}</p>
+<a href="{% url 'product_edit' product.pk %}">Edit</a>
+<form method="post" action="{% url 'product_delete' product.pk %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+{% endblock %}
